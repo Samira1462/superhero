@@ -36,9 +36,38 @@ Set up a private Git repository (do constant, small commits), and in the end git
 it and share it with us in a zip file.
 
 ## Deliverables:
+# Setup
+## App Requirements
+- JVM running on your local machine
+- Maven
+- An IDE of your choice
+
+### Running the app
+To run the app you can use the following maven commands
+./mvnw spring-boot:run
+
 ##openApi: 
 http://localhost:8080/api-docs/
 
 {"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"http://localhost:8080/","description":"Generated server url"}],"paths":{"/api/v1/create":{"post":{"tags":["superhero-controller"],"operationId":"add","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}},"required":true},"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"string"}}}}}}},"/api/v1/retrieve/{superheroId}":{"get":{"tags":["superhero-controller"],"operationId":"getSuperhero","parameters":[{"name":"superheroId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}}}}}}},"components":{"schemas":{"SuperheroDto":{"type":"object","properties":{"alias":{"type":"string"},"name":{"type":"string"},"powers":{"type":"array","items":{"type":"string"}},"weapons":{"type":"array","items":{"type":"string"}},"origin":{"type":"string"},"associations":{"type":"array","items":{"type":"string"}}}}}}}
 
-#####
+## CURL
+- add api
+
+curl --location --request POST 'http://localhost:8080/api/v1/create' \
+--header 'Content-Type: application/json' \
+--data-raw '
+{
+"alias": "Captain Marvel",
+"name": "Carol Danvers",
+"powers": ["photon-blast", "flight", "super-strengt", "healing"],
+"weapons": [],
+"origin": "Exposed to Space Stone reactor overloa",
+"associations":["space-stone", "skrulls", "photon","kree", "avengers"]
+}'
+- getSuperhero api
+
+curl --location --request GET 'http://localhost:8080/api/v1/retrieve/1' \
+--header 'Content-Type: application/json'
+
+
