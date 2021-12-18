@@ -31,8 +31,8 @@ public class SuperheroControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void testPostCarPlug(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(post("/api/v1/create")
+    public void testPostSuperhero(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(post("/superhero/api/v1/create")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(createSuperheroDto())))
                 .andExpect(status().isOk());
@@ -40,14 +40,14 @@ public class SuperheroControllerTest {
 
     @Test
     public void testGetSuperhero(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/api/v1/retrieve/1"))
+        mvc.perform(get("/superhero/api/v1/retrieve/1"))
               .andExpect(status().isOk());
     }
 
     @Test
     public void testGetSuperheroThrowsObjectNotFoundException(@Autowired MockMvc mvc) throws Exception {
         doThrow(RuntimeException.class).when(superheroService).getSuperhero(anyLong());
-        mvc.perform(get("/api/v1/retrieve/2")).andExpect(status().isNotFound());
+        mvc.perform(get("/superhero/api/v1/retrieve/2")).andExpect(status().isNotFound());
     }
 
     public static SuperheroDto createSuperheroDto() {
