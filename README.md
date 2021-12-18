@@ -43,12 +43,13 @@ it and share it with us in a zip file.
 - An IDE of your choice
 
 ### Running the app
-To run the app you can use the following maven commands
+. To run the app you can use the following maven commands
 
 ./mvnw spring-boot:run
 
-To run the app you can use the following docker commands  
+. To run the app you can use the following docker commands  
 docker build -t springboot-docker-superhero:latest .
+
 docker run springboot-docker-superhero
 
 ##openApi: 
