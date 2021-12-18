@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/superhero/api/v1")
 public class SuperheroController {
 
 

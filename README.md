@@ -44,17 +44,22 @@ it and share it with us in a zip file.
 
 ### Running the app
 To run the app you can use the following maven commands
+
 ./mvnw spring-boot:run
+
+To run the app you can use the following docker commands  
+docker build -t springboot-docker-superhero:latest .
+docker run springboot-docker-superhero
 
 ##openApi: 
 http://localhost:8080/api-docs/
 
-{"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"http://localhost:8080/","description":"Generated server url"}],"paths":{"/api/v1/create":{"post":{"tags":["superhero-controller"],"operationId":"add","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}},"required":true},"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"string"}}}}}}},"/api/v1/retrieve/{superheroId}":{"get":{"tags":["superhero-controller"],"operationId":"getSuperhero","parameters":[{"name":"superheroId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}}}}}}},"components":{"schemas":{"SuperheroDto":{"type":"object","properties":{"alias":{"type":"string"},"name":{"type":"string"},"powers":{"type":"array","items":{"type":"string"}},"weapons":{"type":"array","items":{"type":"string"}},"origin":{"type":"string"},"associations":{"type":"array","items":{"type":"string"}}}}}}}
+{"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"http://localhost:8080/","description":"Generated server url"}],"paths":{"/Superhero/api/v1/create":{"post":{"tags":["superhero-controller"],"operationId":"add","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}},"required":true},"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"string"}}}}}}},"/Superhero/api/v1/retrieve/{superheroId}":{"get":{"tags":["superhero-controller"],"operationId":"getSuperhero","parameters":[{"name":"superheroId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/SuperheroDto"}}}}}}}},"components":{"schemas":{"SuperheroDto":{"type":"object","properties":{"alias":{"type":"string"},"name":{"type":"string"},"powers":{"type":"array","items":{"type":"string"}},"weapons":{"type":"array","items":{"type":"string"}},"origin":{"type":"string"},"associations":{"type":"array","items":{"type":"string"}}}}}}}
 
 ## CURL
 - add api
 
-curl --location --request POST 'http://localhost:8080/api/v1/create' \
+curl --location --request POST 'http://localhost:8080/Superhero/api/v1/create' \
 --header 'Content-Type: application/json' \
 --data-raw '
 {
@@ -67,7 +72,7 @@ curl --location --request POST 'http://localhost:8080/api/v1/create' \
 }'
 - getSuperhero api
 
-curl --location --request GET 'http://localhost:8080/api/v1/retrieve/1' \
+curl --location --request GET 'http://localhost:8080/Superhero/api/v1/retrieve/1' \
 --header 'Content-Type: application/json'
 
 
