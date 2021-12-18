@@ -48,9 +48,9 @@ it and share it with us in a zip file.
 ./mvnw spring-boot:run
 
 - To run the app you can use the following docker commands  
-docker build -t springboot-docker-superhero:latest .
+    docker build -t springboot-docker-superhero:latest .
 
-docker run springboot-docker-superhero
+    docker run springboot-docker-superhero
 
 ##openApi: 
 http://localhost:8080/api-docs/
